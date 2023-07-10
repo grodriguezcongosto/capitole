@@ -7,5 +7,5 @@ CREATE TABLE price(
     product_id integer NOT NULL, 
     priority integer NOT NULL, 
     price numeric(20,2) NOT NULL, 
-    currency varchar(3));
+    currency varchar(3) NOT NULL);
 
