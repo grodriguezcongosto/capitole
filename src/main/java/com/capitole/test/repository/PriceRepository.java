@@ -11,6 +11,6 @@ import com.capitole.test.entity.Price;
 
 public interface PriceRepository extends JpaRepository<Price, UUID> {
 
-    Optional<List<Price>> findByStartDateBeforeAndEndDateAfterAndBrandIdAndProductId(LocalDateTime startDate, LocalDateTime endDate, Long brandId, Long productId);
+    Optional<List<Price>> findByStartDateLessThanEqualAndEndDateGreaterThanEqualAndBrandIdAndProductId(LocalDateTime startDate, LocalDateTime endDate, Long brandId, Long productId);
     
 }

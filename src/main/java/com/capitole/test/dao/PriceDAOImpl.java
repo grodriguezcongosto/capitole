@@ -17,9 +17,8 @@ public class PriceDAOImpl implements PriceDAO {
     public PriceDAOImpl(PriceRepository priceRepository) {
         this.priceRepository = priceRepository;
     }
-    
     @Override
     public List<Price> getPrice(LocalDateTime currentDate, Long brandId, Long productId) throws PriceNotFoundException {
-        return priceRepository.findByStartDateBeforeAndEndDateAfterAndBrandIdAndProductId(currentDate, currentDate, brandId, productId).orElseThrow(PriceNotFoundException::new);
+        return priceRepository.findByStartDateLessThanEqualAndEndDateGreaterThanEqualAndBrandIdAndProductId(currentDate, currentDate, brandId, productId).orElseThrow(PriceNotFoundException::new);
     }
 }

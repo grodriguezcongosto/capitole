@@ -14,6 +14,7 @@ import com.capitole.test.exception.PriceNotFoundException;
 import com.capitole.test.service.PriceService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.RequiredArgsConstructor;
@@ -28,14 +29,14 @@ public class PriceController {
 
     private final PriceService priceService;
 
-    @Operation(summary = "Get price by brand, product and start date")
+    @Operation(summary = "Get price by brand, product and date")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
             @ApiResponse(responseCode = "400", description = "Invalid parameters."),
             @ApiResponse(responseCode = "404", description = "Price not found."),
             @ApiResponse(responseCode = "500", description = "Internal error.") })
     @GetMapping(value = "/brands/{brandId}/products/{productId}/price")
-    public ResponseEntity<PriceDTO> getPrice(@RequestParam("currentDate") 
+    public ResponseEntity<PriceDTO> getPrice(@Parameter(description ="currentDate", example="2020-06-14 16:00:00") 
                                              @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime currentDate, 
                                              @PathVariable(value = "brandId") Long brandId, 
                                              @PathVariable(value = "productId") Long productId) throws PriceNotFoundException {

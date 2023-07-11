@@ -17,4 +17,9 @@ spring:
     user: sa
     password: 
     locations: classpath:db/common,classpath:db/testdata
+logging:
+  level:
+    org:
+      hibernate:
+        sql: info
 
