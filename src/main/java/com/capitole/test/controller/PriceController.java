@@ -35,7 +35,7 @@ public class PriceController {
             @ApiResponse(responseCode = "404", description = "Price not found."),
             @ApiResponse(responseCode = "500", description = "Internal error.") })
     @GetMapping(value = "/brands/{brandId}/products/{productId}/price")
-    public ResponseEntity<PriceDTO> getPrice(@RequestParam("startDate") 
+    public ResponseEntity<PriceDTO> getPrice(@RequestParam("currentDate") 
                                              @DateTimeFormat(pattern = DATE_FORMAT) LocalDateTime currentDate, 
                                              @PathVariable(value = "brandId") Long brandId, 
                                              @PathVariable(value = "productId") Long productId) throws PriceNotFoundException {
